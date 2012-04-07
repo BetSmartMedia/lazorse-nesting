@@ -89,15 +89,18 @@ module.exports = (namesParam="inline", recursiveParam="inlineRecursive", opts={}
       if opts.skipMiddleware
         stack = stack.filter (mw) -> mw not in opts.skipMiddleware
 
+
       req = {url, method: 'GET'}
+      req.inlineContext = inlineContext if inlineContext.recursive
+      partialRequest stack, req, done
+
+    partialRequest = (stack, req, done) ->
       res =
         end: (data='') ->
           # XXX - depends on end being called with JSON, probably bad
           res.data = JSON.parse data
           done()
         setHeader: (name, header) ->
-
-      if inlineContext.recursive then req.inlineContext = inlineContext
 
       i = 0
       next = (err) ->
@@ -109,3 +112,17 @@ module.exports = (namesParam="inline", recursiveParam="inlineRecursive", opts={}
 
     @before opts.startBefore or @findResource, storeInlineParam
     @before opts.endBefore or @renderResponse, makeNestedRequests
+    @helper
+      getResource: (shortName, vars, cb) ->
+        startIndex = (@app._stack.indexOf @app.dispatchHandler)
+        endIndex = (@app._stack.indexOf makeNestedRequests)
+        stack = @_stack.slice(startIndex, endIndex)
+        req = {vars, method: 'GET'}
+        partialRequest stack, req, cb
+      postResource: (shortName, vars, body, cb) ->
+        startIndex = (@app._stack.indexOf @app.dispatchHandler)
+        endIndex = (@app._stack.indexOf makeNestedRequests)
+        stack = @_stack.slice(startIndex, endIndex)
+        req = {vars, body, method: 'POST'}
+        partialRequest stack, req, cb
+      
