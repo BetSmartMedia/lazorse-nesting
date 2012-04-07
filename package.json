@@ -1,0 +1,20 @@
+{
+  "author": "Stephen Sugden <glurgle@gmail.com> (http://stephensugden.com/)",
+  "name": "lazorse-nesting",
+  "description": "Flexible nested resource support for Lazorse",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+	"dependencies": {
+		"traverse": "~0.6.0"
+	},
+	"devDependencies": {
+		"mocha": "~1.0.0",
+		"lazorse": ">=0.5"
+	},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
