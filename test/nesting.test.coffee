@@ -83,7 +83,6 @@ describe 'A server with widgets, doodads and frobs', ->
         {
           doodad: { name: doodads[id].name, frob: frobs[doodads[id].frob] }
         }
-      console.log data
       assert.deepEqual data, expected
       done()
 
