@@ -30,7 +30,7 @@ describe 'A server with widgets, doodads and frobs', ->
         widget = {}
         widget[k] = v for k, v of widgets[@widgetName]
         widget.doodads = for id in widget.doodads
-          {doodad: @link('doodad', doodadId: ""+id)}
+          @link 'doodad', doodadId: ""+id
  
         @ok widget
 
@@ -63,26 +63,20 @@ describe 'A server with widgets, doodads and frobs', ->
       done()
  
   it 'can nest doodads in widgets', (done) ->
-    get '/widgets/swizzler?inline=doodad', (data) ->
+    get '/widgets/swizzler?inline=doodads', (data) ->
       expected = {}
       expected[k] = v for k, v of widgets.swizzler
       expected.doodads = for id in expected.doodads
-        {
-          doodad: {
-            name: doodads[id].name, frob: '/frobs/'+doodads[id].frob
-          }
-        }
+        {name: doodads[id].name, frob: '/frobs/'+doodads[id].frob}
       assert.deepEqual data, expected
       done()
 
   it 'can recursively nest frobs in doodads in widgets', (done) ->
-    get '/widgets/swizzler?inline=doodad,frob&inlineRecursive', (data) ->
+    get '/widgets/swizzler?inline=doodads,frob&inlineRecursive', (data) ->
       expected = {}
       expected[k] = v for k, v of widgets.swizzler
       expected.doodads = for id in expected.doodads
-        {
-          doodad: { name: doodads[id].name, frob: frobs[doodads[id].frob] }
-        }
+        {name: doodads[id].name, frob: frobs[doodads[id].frob]}
       assert.deepEqual data, expected
       done()
 

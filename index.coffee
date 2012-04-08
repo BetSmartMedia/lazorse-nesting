@@ -1,4 +1,5 @@
 traverse = require 'traverse'
+isArray = Array.isArray
 
 module.exports = (namesParam="inline", recursiveParam="inlineRecursive", opts={}) ->
 
@@ -38,7 +39,8 @@ module.exports = (namesParam="inline", recursiveParam="inlineRecursive", opts={}
       traverse(res.data).forEach (maybeURL) ->
         return if typeof maybeURL isnt 'string'
         return if maybeURL.substring(0,1) isnt '/'
-        return if @path[@path.length - 1] not in inline.keys
+        parentKey = @path[@path.length - if isArray @parent.node then 2 else 1]
+        return if parentKey not in inline.keys
 
         url = maybeURL
         if inline.errors[url]
