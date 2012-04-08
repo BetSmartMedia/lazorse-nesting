@@ -2,7 +2,7 @@
   "author": "Stephen Sugden <glurgle@gmail.com> (http://stephensugden.com/)",
   "name": "lazorse-nesting",
   "description": "Flexible nested resource support for Lazorse",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "url": ""
   },
