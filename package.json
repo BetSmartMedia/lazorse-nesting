@@ -15,7 +15,8 @@
     "coffee-script": "~1.2.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "prepublish": "make test"
   },
   "optionalDependencies": {},
   "engines": {

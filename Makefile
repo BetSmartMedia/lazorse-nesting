@@ -1,4 +1,9 @@
 .PHONY : test
 
-test:
-	@./node_modules/.bin/mocha --compilers coffee:coffee-script
+PATH := ./node_modules/.bin/:$(PATH)
+
+%.js : *.coffee
+	@coffee -c $<
+
+test: index.js
+	@mocha --compilers coffee:coffee-script
