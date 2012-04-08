@@ -6,13 +6,17 @@
   "repository": {
     "url": ""
   },
-	"dependencies": {
-		"traverse": "~0.6.0"
-	},
-	"devDependencies": {
-		"mocha": "~1.0.0",
-		"lazorse": ">=0.5"
-	},
+  "dependencies": {
+    "traverse": "~0.6.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.0.0",
+    "lazorse": ">=0.5",
+    "coffee-script": "~1.2.0"
+  },
+  "scripts": {
+    "test": "make test"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
