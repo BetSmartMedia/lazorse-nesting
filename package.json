@@ -3,6 +3,7 @@
   "name": "lazorse-nesting",
   "description": "Flexible nested resource support for Lazorse",
   "version": "0.1.0",
+	"keywords": ["rest", "nested", "resource", "inline"],
   "repository": {
     "url": ""
   },
