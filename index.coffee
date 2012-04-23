@@ -46,7 +46,7 @@ module.exports = (namesParam="inline", recursiveParam="inlineRecursive", opts={}
         if inline.errors[url]
           return
         if data = inline.retrieved[url]
-          @replace data
+          @update data
         if inline.pending[url]
           inline.pending[url].push [res.data, @path]
         else
