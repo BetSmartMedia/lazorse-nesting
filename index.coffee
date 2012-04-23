@@ -46,7 +46,9 @@ module.exports = (namesParam="inline", recursiveParam="inlineRecursive", opts={}
         if inline.errors[url]
           return
         if data = inline.retrieved[url]
-          @update data
+          return @update data
+        if parentContext = @circular
+          return @update "ref:/#{parentContext.path.join('/')}", true
         if inline.pending[url]
           inline.pending[url].push [res.data, @path]
         else
