@@ -129,4 +129,4 @@ module.exports = (namesParam="inline", recursiveParam="inlineRecursive", opts={}
         stack = @_stack.slice(startIndex, endIndex)
         req = {vars, body, method: 'POST'}
         partialRequest stack, req, cb
-      
+
