@@ -1,4 +1,4 @@
-# Lazorse-nesting
+# lazorse-nesting [![Build Status](https://secure.travis-ci.org/BetSmartMedia/lazorse-nesting.png?branch=master)](http://travis-ci.org/BetSmartMedia/lazorse-nesting)
 
 ![horse in a nest](/BetSmartMedia/lazorse-nesting/raw/master/horsenest.png)
 
