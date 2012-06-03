@@ -19,8 +19,7 @@ describe 'A server with widgets, doodads and frobs', ->
 
   frobs = [ 'cromulent', 'embiggen' ]
 
-  server = lazorse ->
-    @port = 0
+  server = lazorse.server port: 0, host: '127.0.0.1', ->
     @passErrors = true
     @include nesting()
 

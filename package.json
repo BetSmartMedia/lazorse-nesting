@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "mocha": "~1.0.0",
-    "lazorse": ">=0.5",
+    "lazorse": "~0.6.0",
     "coffee-script": "~1.2.0"
   },
   "scripts": {
